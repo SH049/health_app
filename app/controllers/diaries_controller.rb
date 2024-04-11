@@ -1,5 +1,5 @@
 class DiariesController < ApplicationController
-  before_action :set_diary, only: %i[ show edit update destroy ]
+  before_action :set_diary, only: %i(show edit update destroy)
 
   # GET /diaries or /diaries.json
   def index
@@ -58,13 +58,14 @@ class DiariesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_diary
-      @diary = Diary.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def diary_params
-      params.require(:diary).permit(:title, :text, :datetime, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_diary
+    @diary = Diary.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def diary_params
+    params.require(:diary).permit(:title, :text, :datetime, :user_id)
+  end
 end

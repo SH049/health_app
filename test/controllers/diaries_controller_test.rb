@@ -17,7 +17,8 @@ class DiariesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create diary" do
     assert_difference('Diary.count') do
-      post diaries_url, params: { diary: { datetime: @diary.datetime, text: @diary.text, title: @diary.title, user_id: @diary.user_id } }
+      post diaries_url,
+params: { diary: { datetime: @diary.datetime, text: @diary.text, title: @diary.title, user_id: @diary.user_id } }
     end
 
     assert_redirected_to diary_url(Diary.last)
@@ -34,7 +35,8 @@ class DiariesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update diary" do
-    patch diary_url(@diary), params: { diary: { datetime: @diary.datetime, text: @diary.text, title: @diary.title, user_id: @diary.user_id } }
+    patch diary_url(@diary),
+params: { diary: { datetime: @diary.datetime, text: @diary.text, title: @diary.title, user_id: @diary.user_id } }
     assert_redirected_to diary_url(@diary)
   end
 
