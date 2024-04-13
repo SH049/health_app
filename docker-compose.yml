@@ -27,10 +27,9 @@ services:
         target: /var/lib/mysql
 
   webpacker:
-    build: .
+    build:
+      context: .
     command: bundle exec bin/webpack-dev-server
-    volumes:
-      - .:/favorite_spot
     ports:
       - "8000:8000"
       
