@@ -1,4 +1,4 @@
-FROM ruby:3.0.6-buster
+FROM ruby:3.0.0-buster
 
 RUN apt-get update -qq && apt-get install -y build-essential nodejs default-mysql-client libmariadb-dev-compat
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
