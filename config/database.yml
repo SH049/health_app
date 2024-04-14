@@ -50,4 +50,4 @@ test:
 #
 production:
   <<: *default
-  url: <%= ENV['MY_APP_DATABASE_URL'] %>
+  url: <%= ENV['CLEARDB_DATABASE_URL'] || ENV['JAWSDB_URL'] %>
