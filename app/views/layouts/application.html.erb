@@ -11,6 +11,21 @@
   </head>
 
   <body>
+    <header>
+      <% if user_signed_in? %>
+        <div id="menu">
+          <p><%= link_to "日記", diaries_path, class:"header-link" %></p>
+          <p><%= link_to "ログアウト", destroy_user_session_path, class:"header-link", method: :delete %></p>
+        </div>
+      <% else %>
+        <div class="logout-header-links">
+          <p><%= link_to "ログイン", new_user_session_path, class:"logout-header-link" %></p>
+          <p><%= link_to "新規登録", new_user_registration_path, class:"logout-header-link" %></p>
+        </div>
+      <% end %>
+    </header>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>
