@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Src</title>
+    <title>HealthApp</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://kit.fontawesome.com/16220d5f5d.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -14,18 +19,53 @@
 
   <body>
     <header>
-      <% if user_signed_in? %>
-        <div id="menu">
-          <p><%= link_to "日記", diaries_path, class:"header-link" %></p>
-          <p><%= link_to "ログアウト", destroy_user_session_path, class:"header-link", method: :delete %></p>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand text-light" href="/">HealthApp</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+            <ul class="navbar-nav mr-auto">
+              <% if user_signed_in? %>
+                <li>
+                  <%= link_to root_path, class: 'nav-link text-light' do %>
+                    <i class="fa-solid fa-house"></i> Home
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to diaries_path, class: 'nav-link text-light' do %>
+                    <i class="fa-solid fa-book"></i> 日記
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-light' do %>
+                    <i class="fa-solid fa-door-closed"></i> ログアウト
+                  <% end %>
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to root_path, class: 'nav-link text-light' do %>
+                    <i class="fa-solid fa-house"></i> Home
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to new_user_session_path, class: 'nav-link text-light' do %>
+                    <i class="fa-solid fa-door-open"></i> ログイン
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to new_user_registration_path, class: 'nav-link text-light' do %>
+                    <i class="fa-solid fa-pen-to-square"></i> 新規登録
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
         </div>
-      <% else %>
-        <div class="logout-header-links">
-          <p><%= link_to "ログイン", new_user_session_path, class:"logout-header-link" %></p>
-          <p><%= link_to "新規登録", new_user_registration_path, class:"logout-header-link" %></p>
-        </div>
-      <% end %>
+      </nav>
     </header>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>

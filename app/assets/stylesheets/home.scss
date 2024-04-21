@@ -3,5 +3,11 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .font-color {
-    color:red;
+  color:red;
+}
+.navbar-brand:hover {
+  background-color:inherit;
+}
+.navbar-dark .navbar-nav .nav-link:hover{
+  background-color:inherit;
 }
