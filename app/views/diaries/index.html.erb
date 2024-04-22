@@ -18,7 +18,7 @@
       <tr>
         <td><%= diary.title %></td>
         <td><%= diary.text %></td>
-        <td><%= diary.datetime %></td>
+        <td><%= diary.start_time %></td>
         <td><%= diary.user_id %></td>
         <td><%= link_to 'Show', diary %></td>
         <td><%= link_to 'Edit', edit_diary_path(diary) %></td>
@@ -31,3 +31,17 @@
 <br>
 
 <%= link_to 'New Diary', new_diary_path %>
+
+<br>
+
+<div class="col-md-8">
+<%= month_calendar events: @diaries do |date, diaries| %>
+  <%= date.day %>
+
+  <% diaries.each do |diary| %>
+    <div>
+      <%= link_to diary.title, diary %>
+    </div>
+  <% end %>
+<% end %>
+</div>

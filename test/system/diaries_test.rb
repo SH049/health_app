@@ -14,7 +14,7 @@ class DiariesTest < ApplicationSystemTestCase
     visit diaries_url
     click_on "New Diary"
 
-    fill_in "Datetime", with: @diary.datetime
+    fill_in "Datetime", with: @diary.start_time
     fill_in "Text", with: @diary.text
     fill_in "Title", with: @diary.title
     fill_in "User", with: @diary.user_id
@@ -28,7 +28,7 @@ class DiariesTest < ApplicationSystemTestCase
     visit diaries_url
     click_on "Edit", match: :first
 
-    fill_in "Datetime", with: @diary.datetime
+    fill_in "Datetime", with: @diary.start_time
     fill_in "Text", with: @diary.text
     fill_in "Title", with: @diary.title
     fill_in "User", with: @diary.user_id
