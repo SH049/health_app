@@ -3,4 +3,5 @@
 <%= render 'form', diary: @diary %>
 
 <%= link_to 'Show', @diary %> |
+<%= link_to 'Destroy', @diary, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', diaries_path %>

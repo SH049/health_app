@@ -1,27 +1,40 @@
 class DiariesController < ApplicationController
   before_action :set_diary, only: %i(show edit update destroy)
+  before_action :authenticate_user!
 
   # GET /diaries or /diaries.json
   def index
-    @diaries = Diary.all
+    @diaries = Diary.where(user_id: current_user.id)
+    # @user = current_user
   end
 
   # GET /diaries/1 or /diaries/1.json
   def show
+    @diary = Diary.find(params[:id])
+    if @diary.user_id != current_user.id
+      flash[:notice] = "権限がありません"
+      redirect_to diaries_path
+    end
   end
 
   # GET /diaries/new
   def new
     @diary = Diary.new
+    # @user = current_user
   end
 
   # GET /diaries/1/edit
   def edit
+    @diary = Diary.find(params[:id])
+    if @diary.user_id != current_user.id
+      flash[:notice] = "権限がありません"
+      redirect_to diaries_path
+    end
   end
 
   # POST /diaries or /diaries.json
   def create
-    @diary = Diary.new(diary_params)
+    @diary = current_user.diaries.new(diary_params)
 
     respond_to do |format|
       if @diary.save
