@@ -4,7 +4,7 @@ class DiariesController < ApplicationController
 
   # GET /diaries or /diaries.json
   def index
-    @diaries = Diary.where(user_id: current_user.id)
+    @diaries = current_user.diaries
     # @user = current_user
   end
 
@@ -19,7 +19,7 @@ class DiariesController < ApplicationController
 
   # GET /diaries/new
   def new
-    @diary = Diary.new
+    @diary = Diary.new(start_time: params[:date]) if params[:date].present?
     # @user = current_user
   end
 
