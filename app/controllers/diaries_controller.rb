@@ -19,7 +19,7 @@ class DiariesController < ApplicationController
 
   # GET /diaries/new
   def new
-    @diary = Diary.new(start_time: params[:date]) if params[:date].present?
+    @diary = Diary.new(start_time: params[:date])
     # @user = current_user
   end
 
