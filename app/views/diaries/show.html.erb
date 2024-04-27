@@ -15,5 +15,17 @@
   <%= @diary.start_time %>
 </p>
 
+<p>
+  <strong>Feeling:</strong>
+  <% case @diary.feeling %>
+    <% when 2 %>
+      よかった
+    <% when 1 %>
+      ふつう
+    <% when 0 %>
+      わるかった
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_diary_path(@diary) %> |
 <%= link_to 'Back', diaries_path %>
