@@ -1,8 +1,7 @@
 <%= form_with(model: diary) do |form| %>
   <% if diary.errors.any? %>
     <div id="error_explanation">
-      <h2>必須入力です</h2>
-
+      <h2>エラーが発生しました</h2>
       <ul>
         <% diary.errors.each do |error| %>
           <li><%= error.full_message %></li>
