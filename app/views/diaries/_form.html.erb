@@ -10,6 +10,7 @@
     </div>
   <% end %>
 
+  <% starttime_column ||= false %>
   <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title %>
@@ -21,10 +22,17 @@
     <%= form.text_area :text %>
   </div>
 
+  <% if starttime_column %>
   <div class="field">
-    <%= form.label :start_time %>
-    <%= form.date_select :start_time %>
+      <%= form.label :start_time %>
+      <%= form.date_select :start_time %>
   </div>
+  <% else %>
+    <div class="field">
+      <%= form.label :start_time %>
+      <%= form.date_select :start_time, { disabled: true } %>
+    </div>
+  <% end %>
 
   <div class="field">
     <%= form.radio_button :feeling, 2, checked: true %>
