@@ -5,6 +5,8 @@
 //= require rails-ujs
 
 require("jquery")
+require("chartkick")
+require("chart.js")
 
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"

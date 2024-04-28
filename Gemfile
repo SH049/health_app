@@ -30,6 +30,8 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'rails-i18n'
 # debug
 gem 'pry-rails'
+#graph
+gem "chartkick"
 
 group :development, :test do
   gem 'factory_bot_rails'

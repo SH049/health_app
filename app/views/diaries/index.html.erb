@@ -2,6 +2,8 @@
 
 <h1>Diaries</h1>
 
+<%= line_chart Diary.pluck(:start_time, :feeling) %>
+
 <br>
 
 <div class="col-md-8 mx-auto">
