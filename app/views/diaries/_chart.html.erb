@@ -1,3 +1,3 @@
-<% daily_totals = diaries.group("DATE(start_time)").where(start_time: 1.week.ago.beginning_of_day..(Time.zone.now.end_of_day)).order("DATE(start_time)").sum(:feeling) %>
+<% daily_totals = diaries.group("DATE(start_time)").where(start_time: 6.days.ago.beginning_of_day..(Time.zone.now.end_of_day)).order("DATE(start_time)").sum(:feeling) %>
 <% formatted_totals = daily_totals.transform_keys { |date| date.strftime("%m/%d") } %>
 <%= line_chart formatted_totals %>
