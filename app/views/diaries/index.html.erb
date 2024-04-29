@@ -2,7 +2,7 @@
 
 <h1>Diaries</h1>
 
-<%= line_chart Diary.pluck(:start_time, :feeling) %>
+<%= render 'chart', diaries: @diaries %>
 
 <br>
 

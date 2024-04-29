@@ -32,6 +32,7 @@ gem 'rails-i18n'
 gem 'pry-rails'
 #graph
 gem "chartkick"
+gem 'groupdate'
 
 group :development, :test do
   gem 'factory_bot_rails'
