@@ -4,8 +4,8 @@ class DiariesController < ApplicationController
 
   # GET /diaries or /diaries.json
   def index
-    @diaries = current_user.diaries
-    # @user = current_user
+    @diaries = current_user.diaries.decorate
+    @formatted_totals = Diary.formatted_totals
   end
 
   # GET /diaries/1 or /diaries/1.json
