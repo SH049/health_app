@@ -33,8 +33,6 @@ gem 'pry-rails'
 # graph
 gem "chartkick"
 gem 'groupdate'
-# decorator
-gem 'draper'
 
 group :development, :test do
   gem 'factory_bot_rails'
