@@ -33,6 +33,8 @@ gem 'pry-rails'
 # graph
 gem "chartkick"
 gem 'groupdate'
+# youtube
+gem 'google-api-client', require: 'google/apis/youtube_v3'
 
 group :development, :test do
   gem 'factory_bot_rails'
