@@ -8,8 +8,18 @@ class DiariesController < ApplicationController
   def index
     @diaries = current_user.diaries
     @formatted_totals = Diary.formatted_totals
+    @weekly_average = Diary.weekly_average
 
     playlist_items = fetch_playlist_items('PLmmg3EUaDrLCyTtOJMpaza4bDvq_B9DvR')
+    case @weekly_average
+    when 0..0.5
+      playlist_items = fetch_playlist_items('PLmmg3EUaDrLCyTtOJMpaza4bDvq_B9DvR')
+    when 1..2
+      playlist_items = fetch_playlist_items('PLmmg3EUaDrLAHsJvj04JOtXjuXmVWjizN')
+    else
+      playlist_items = fetch_playlist_items('PLmmg3EUaDrLClpt496npULiwj6xr_L_p1')
+    end
+
     @random_playlist_item = playlist_items.sample
   end
 
@@ -20,6 +30,17 @@ class DiariesController < ApplicationController
       flash[:notice] = "権限がありません"
       redirect_to diaries_path
     end
+
+    playlist_items = fetch_playlist_items('PLmmg3EUaDrLCyTtOJMpaza4bDvq_B9DvR')
+    case @diary.feeling
+    when 0
+      playlist_items = fetch_playlist_items('PLmmg3EUaDrLCyTtOJMpaza4bDvq_B9DvR')
+    when 1
+      playlist_items = fetch_playlist_items('PLmmg3EUaDrLAHsJvj04JOtXjuXmVWjizN')
+    when 2
+      playlist_items = fetch_playlist_items('PLmmg3EUaDrLClpt496npULiwj6xr_L_p1')
+    end
+    @random_playlist_item = playlist_items.sample
   end
 
   # GET /diaries/new

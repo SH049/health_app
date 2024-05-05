@@ -27,5 +27,12 @@
   <% end %>
 </p>
 
+<div class="playlist-item">
+  <h2>今日のあなたにおすすめの音楽</h2>
+  <h3><%= @random_playlist_item.snippet.title %></h3>
+  <p><%#= item.snippet.description %></p>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @random_playlist_item.content_details.video_id %>" frameborder="0" allowfullscreen></iframe>
+</div>
+
 <%= link_to 'Edit', edit_diary_path(@diary) %> |
 <%= link_to 'Back', diaries_path %>
