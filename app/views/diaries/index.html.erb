@@ -6,6 +6,13 @@
 
 <br>
 
+  <div class="playlist-item">
+    <h2><%= @random_playlist_item.snippet.title %></h2>
+    <p><%#= item.snippet.description %></p>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @random_playlist_item.content_details.video_id %>" frameborder="0" allowfullscreen></iframe>
+  </div>
+
+
 <div class="col-md-8 mx-auto">
   <%= month_calendar events: @diaries do |date, diaries| %>
     <% unless diaries.empty? %>

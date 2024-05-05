@@ -1,11 +1,16 @@
 class DiariesController < ApplicationController
+  include YoutubeService
   before_action :set_diary, only: %i(show edit update destroy)
   before_action :authenticate_user!
+  
 
   # GET /diaries or /diaries.json
   def index
     @diaries = current_user.diaries
     @formatted_totals = Diary.formatted_totals
+
+    playlist_items = fetch_playlist_items('PLmmg3EUaDrLCyTtOJMpaza4bDvq_B9DvR')
+    @random_playlist_item = playlist_items.sample
   end
 
   # GET /diaries/1 or /diaries/1.json
