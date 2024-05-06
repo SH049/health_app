@@ -72,8 +72,39 @@
       </nav>
     </header>
 
-    <span class="notice"><%= notice %></span>
-    <span class="alert"><%= alert %></span>
+
     <%= yield %>
+  <% if notice.present? || alert.present? %>
+  <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      
+      <div class="modal-body">
+        <!-- noticeメッセージ -->
+        <% if notice %>
+          <div class="alert alert-success" role="alert">
+            <%= notice %>
+          </div>
+        <% end %>
+
+        <!-- alertメッセージ -->
+        <% if alert %>
+          <div class="alert alert-danger" role="alert">
+            <%= alert %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ページ読み込み時にメッセージモーダルを表示する
+  $(document).ready(function() {
+    $('#messageModal').modal('show');
+  });
+</script>
+<% end %>
+
   </body>
 </html>
