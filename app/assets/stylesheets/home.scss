@@ -2,8 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.font-color {
-  color:red;
+.first-view {
+  background-image: image-url("home/cover.jpg");
+  background-size: cover;
+  height: 800px;
 }
 .navbar-brand:hover {
   background-color:inherit;
