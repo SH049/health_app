@@ -7,8 +7,8 @@ class DiariesController < ApplicationController
   # GET /diaries or /diaries.json
   def index
     @diaries = current_user.diaries
-    @formatted_totals = Diary.formatted_totals
-    @weekly_average = Diary.weekly_average
+    @formatted_totals = @diaries.formatted_totals
+    @weekly_average = @diaries.weekly_average
 
     playlist_items = fetch_playlist_items('PLmmg3EUaDrLCyTtOJMpaza4bDvq_B9DvR')
     case @weekly_average
