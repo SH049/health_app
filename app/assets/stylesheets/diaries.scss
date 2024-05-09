@@ -1,7 +1,44 @@
 // Place all the styles related to the Diaries controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-
+// index
+.diary {
+  background-color: rgb(212, 218, 223);
+  padding-bottom: 100px;
+  &-chart {
+    padding-top:20px;
+    width: 500px;
+    margin: 0 auto;
+  }
+  &-contens {
+    display: flex;
+  }
+  &-calender {
+    margin: 0 auto;
+  }
+}
 .playlist-item {
   margin-left:20px;
+  > h3 {
+    font-size: 18px;
+    max-width: 500px;
+  }
+}
+// show
+.diary-show {
+  background-color: rgb(212, 218, 223);
+}
+/* タブレット用のスタイル */
+@media screen and (max-width: 1023px) {
+  .diary {
+    &-contens {
+      flex-wrap: wrap;
+    }
+  }
+  .playlist-item {
+    margin: 0 auto;
+    &-video {
+      margin: 0 auto;
+    }
+  }
 }

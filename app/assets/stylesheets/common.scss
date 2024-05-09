@@ -1,3 +1,11 @@
+.navbar-brand {
+  &:hover {
+    background-color:inherit;
+  }
+}
+.navbar-dark .navbar-nav .nav-link:hover{
+  background-color:inherit;
+}
 .red {
-    color:red;
+  color:red;
 }

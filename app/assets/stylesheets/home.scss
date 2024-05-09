@@ -10,12 +10,31 @@
   padding-bottom: 40%;
   // height: 670px;
 }
-
-.navbar-brand:hover {
-  background-color:inherit;
+.first-view-contents {
+  padding-top: 20px;
+  font-family: 'Hiragino Maru Gothic ProN W4';
+  color: rgb(102, 153, 212);
+  text-shadow:0.5px 0.5px 0 #FFF, -0.5px -0.5px 0 #FFF,
+              -0.5px 0.5px 0 #FFF, 0.5px -0.5px 0 #FFF,
+              0px 0.5px 0 #FFF,  0-0.5px 0 #FFF,
+              -0.5px 0 0 #FFF, 0.5px 0 0 #FFF;
+  > p {
+    padding: 50px 0;
+    font-size: 16px;
+  }
 }
-.navbar-dark .navbar-nav .nav-link:hover{
-  background-color:inherit;
+.first-view-content-link {
+  text-decoration: none;
+  background-color: rgba(73, 129, 240, 0.3);
+  padding:30px;
+  width: 300px;
+  height: 40px;
+  border: 0.1px solid #5a74a9;
+  border-radius: 10px;
+  &:hover {
+    background-color:rgba(73, 129, 240, 0.5);
+    color: inherit;
+  }
 }
 
 /* タブレット用のスタイル */
