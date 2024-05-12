@@ -2,7 +2,6 @@ class DiariesController < ApplicationController
   include YoutubeService
   before_action :set_diary, only: %i(show edit update destroy)
   before_action :authenticate_user!
-  
 
   # GET /diaries or /diaries.json
   def index
