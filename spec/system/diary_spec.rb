@@ -10,11 +10,14 @@ RSpec.describe "Diaries", type: :system do
     ]
   end
 
+  before do
+    sign_in user
+    allow_any_instance_of(YoutubeService).to receive(:fetch_playlist_items).and_return(mock_playlist_item)
+  end
+
   describe 'index' do
     before do
-      sign_in user
-      allow_any_instance_of(YoutubeService).to receive(:fetch_playlist_items).and_return(mock_playlist_item)
-      visit diaries_path # ページにアクセス
+      visit diaries_path
     end
     describe '日記' do
       context "日記がある場合" do
@@ -43,6 +46,9 @@ RSpec.describe "Diaries", type: :system do
           expect(page).to have_content(diary.title)
 
           expect(current_path).to eq(diary_path(diary))
+
+          expect(page).to have_content("今日のあなたにおすすめの音楽")
+          expect(page).to have_content("動画タイトル")
           # binding pry
           # expect(page).to have_link(date.day, href: diary_path(diary))
         end
@@ -71,6 +77,23 @@ RSpec.describe "Diaries", type: :system do
       it '動画のiframeが正しいURLで表示されること' do
         expect(page).to have_css("iframe[src='https://www.youtube.com/embed/動画ID']")
       end
+    end
+  end
+
+  describe 'show' do
+    before do
+      visit diary_path(diary) # ページにアクセス
+    end
+    it '日記が表示されること' do
+      expect(page).to have_content(diary.text)
+    end
+    it '編集ボタンを押すと編集ページに飛ぶこと' do
+      click_on "Edit"
+      expect(current_path).to eq(edit_diary_path(diary))
+    end
+    it 'backボタンを押すと一覧ページに飛ぶこと' do
+      click_on "Back"
+      expect(current_path).to eq(diaries_path)
     end
   end
 end
