@@ -24,9 +24,71 @@
     max-width: 500px;
   }
 }
-// show
-.diary-show {
-  background-color: rgb(212, 218, 223);
+// show edit
+.diary {
+  &-background {
+    background-color: rgb(212, 218, 223);
+  }
+  &-form {
+    color: rgb(20, 30, 139);
+  }
+  
+}
+.form-fields {
+  margin: 0 auto;
+  width: 300px;
+  text-align: center;
+}
+.field-text {
+  border-radius: 10%;
+  font-size: 20px;
+  font-weight: 500;
+  background: linear-gradient(
+    60deg,
+    transparent 70%, 
+    rgb(44, 149, 248) 80%, 
+    rgb(21, 142, 255) 85%, 
+    rgba(0, 132, 255, 0.5) 90%, 
+);
+}
+.feeling{
+  width: fit-content;
+  margin: 20px auto;
+}
+.field-desgin {
+  border-radius: 5px;
+  width: 300px;
+}
+.one-line {
+  height: 30px;
+}
+.lines {
+  height: 50px;
+}
+/* 初期アイコンの色 */
+.fa-face-smile, .fa-face-meh, .fa-face-frown {
+  color: gray;
+  cursor: pointer;
+}
+.hidden{
+  visibility:hidden;
+}
+.feeling-label{
+  text-align: center;
+}
+
+
+/* 選択されたラジオボタンに対応するラベルのアイコンの色を変える */
+input[type="radio"]:checked + label i.fa-face-smile {
+  color: green;
+}
+
+input[type="radio"]:checked + label i.fa-face-meh {
+  color: orange;
+}
+
+input[type="radio"]:checked + label i.fa-face-frown {
+  color: red;
 }
 /* タブレット用のスタイル */
 @media screen and (max-width: 1023px) {

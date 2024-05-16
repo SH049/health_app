@@ -1,7 +1,9 @@
-<h1>Editing Diary</h1>
+<div class="diary-background">
+  <h1>編集</h1>
 
-<%= render 'form', diary: @diary %>
+  <%= render 'form', diary: @diary %>
 
-<%= link_to 'Show', @diary %> |
-<%= link_to 'Destroy', @diary, method: :delete, data: { confirm: 'Are you sure?' } %> |
-<%= link_to 'Back', diaries_path %>
+  <%= link_to 'Show', @diary %> |
+  <%= link_to 'Destroy', @diary, method: :delete, data: { confirm: 'Are you sure?' } %> |
+  <%= link_to 'Back', diaries_path %>
+</div>

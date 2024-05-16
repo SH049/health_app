@@ -1,51 +1,64 @@
-<%= form_with(model: diary) do |form| %>
-  <% if diary.errors.any? %>
-    <div id="error_explanation">
-      <h2>エラーが発生しました</h2>
-      <ul>
-        <% diary.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+<div class="diary-form">
+  <%= form_with(model: diary) do |form| %>
+    <% if diary.errors.any? %>
+      <div id="error_explanation">
+        <h2>エラーが発生しました</h2>
+        <ul>
+          <% diary.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <% starttime_column ||= false %>
+    <div class="form-fields">
+      <div class="field">
+        <p><%= form.label :title, "タイトル", class:"field-text" %></p>
+        <p><%= form.text_field :title, class:"field-desgin one-line" %></p>
+      </div>
+
+      <div class="field">
+        <p><span class="red">*</span><%= form.label :text, '内容', class:"field-text" %></p>
+        <p><%= form.text_area :text, class:"field-desgin lines" %></p>
+      </div>
+
+      <% if starttime_column %>
+        <div class="field">
+          <p><%= form.label :start_time, '日付', class:"field-text" %></p>
+          <p><%= form.date_select :start_time %></p>
+        </div>
+      <% else %>
+        <div class="field">
+          <p><%= form.label :start_time, '日付', class:"field-text" %></p>
+          <p><%= form.date_select :start_time, { disabled: true } %></p>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <p class="field-text feeling">今日の気分</p>
+        <%= form.radio_button :feeling, 2, id: 'feeling_good', checked: true, class: 'hidden' %>
+        <%= form.label :feeling, "よかった", value: 2, for: 'feeling_good', class: 'feeling-label' do %>
+          <i class="fa-regular fa-face-smile"></i>
+          <p>よかった</p>
         <% end %>
-      </ul>
-    </div>
+
+        <%= form.radio_button :feeling, 1, id: 'feeling_normal', class: 'hidden' %>
+        <%= form.label :feeling, "ふつう", value: 1, for: 'feeling_normal', class: 'feeling-label' do %>
+          <i class="fa-regular fa-face-meh"></i>
+          <p>ふつう</p>
+        <% end %>
+
+        <%= form.radio_button :feeling, 0, id: 'feeling_bad', class: 'hidden' %>
+        <%= form.label :feeling, "わるかった", value: 0, for: 'feeling_bad', class: 'feeling-label' do %>
+          <i class="fa-regular fa-face-frown"></i>
+          <p>わるかった<p>
+        <% end %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit "送信", class:"submit-button" %>
+      </div>
+    <div>
   <% end %>
-
-  <% starttime_column ||= false %>
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <span class="red">*</span>
-    <%= form.label :text %>
-    <%= form.text_area :text %>
-  </div>
-
-  <% if starttime_column %>
-  <div class="field">
-      <%= form.label :start_time %>
-      <%= form.date_select :start_time %>
-  </div>
-  <% else %>
-    <div class="field">
-      <%= form.label :start_time %>
-      <%= form.date_select :start_time, { disabled: true } %>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.radio_button :feeling, 2, checked: true %>
-    <%= form.label :feeling, "よかった", value: 2 %>
-
-    <%= form.radio_button :feeling, 1 %>
-    <%= form.label :feeling, "ふつう", value: 1 %>
-
-    <%= form.radio_button :feeling, 0 %>
-    <%= form.label :feeling, "わるかった", value: 0 %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
