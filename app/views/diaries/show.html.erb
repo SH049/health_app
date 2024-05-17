@@ -1,37 +1,41 @@
-<div class="diary-background text-dark">
-  <p>
-    <strong>Title:</strong>
-    <%= @diary.title %>
-  </p>
+<div class="diary-background">
+  <div class="diary-contens">
+    <div class="note-box">
+      <p>
+        <strong>Title:</strong>
+        <%= @diary.title %>
+      </p>
 
-  <p>
-    <strong>Text:</strong>
-    <%= @diary.text %>
-  </p>
+      <p>
+        <strong>Datetime:</strong>
+        <%= @diary.start_time %>
+      </p>
 
-  <p>
-    <strong>Datetime:</strong>
-    <%= @diary.start_time %>
-  </p>
+      <p>
+        <strong>Feeling:</strong>
+        <% case @diary.feeling %>
+          <% when 2 %>
+            よかった
+          <% when 1 %>
+            ふつう
+          <% when 0 %>
+            わるかった
+        <% end %>
+      </p>
 
-  <p>
-    <strong>Feeling:</strong>
-    <% case @diary.feeling %>
-      <% when 2 %>
-        よかった
-      <% when 1 %>
-        ふつう
-      <% when 0 %>
-        わるかった
-    <% end %>
-  </p>
+      <p>
+        <strong>Text:</strong>
+        <%= @diary.text %>
+      </p>
 
-  <div class="playlist-item">
-    <h2>今日のあなたにおすすめの音楽</h2>
-    <h3><%= @random_playlist_item.snippet.title %></h3>
-    <iframe width="560" height="315" class="playlist-item-video" src="https://www.youtube.com/embed/<%= @random_playlist_item.content_details.video_id %>" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="playlist-item">
+      <h2>今日のあなたにおすすめの音楽</h2>
+      <h3>-<%= @random_playlist_item.snippet.title %>-</h3>
+      <iframe width="560" height="315" class="playlist-item-video" src="https://www.youtube.com/embed/<%= @random_playlist_item.content_details.video_id %>" frameborder="0" allowfullscreen></iframe>
+    </div>
   </div>
 
-  <%= link_to 'Edit', edit_diary_path(@diary) %> |
-  <%= link_to 'Back', diaries_path %>
+    <%= link_to '編集', edit_diary_path(@diary) %> |
+    <%= link_to '一覧に戻る', diaries_path %>
 </div>

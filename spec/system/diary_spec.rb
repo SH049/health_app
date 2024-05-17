@@ -88,11 +88,11 @@ RSpec.describe "Diaries", type: :system do
       expect(page).to have_content(diary.text)
     end
     it '編集ボタンを押すと編集ページに飛ぶこと' do
-      click_on "Edit"
+      click_on "編集"
       expect(current_path).to eq(edit_diary_path(diary))
     end
-    it 'backボタンを押すと一覧ページに飛ぶこと' do
-      click_on "Back"
+    it '一覧に戻るボタンを押すと一覧ページに飛ぶこと' do
+      click_on "一覧に戻る"
       expect(current_path).to eq(diaries_path)
     end
   end

@@ -1,7 +1,7 @@
 // Place all the styles related to the Diaries controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-// index
+// index show edit
 .diary {
   background-color: rgb(212, 218, 223);
   padding-bottom: 100px;
@@ -11,28 +11,58 @@
     margin: 0 auto;
   }
   &-contens {
+    padding-top: 20px;
     display: flex;
+    margin: 0 auto;
+    width: 90%;
   }
   &-calender {
     margin: 0 auto;
   }
-}
-.playlist-item {
-  margin-left:20px;
-  > h3 {
-    font-size: 18px;
-    max-width: 500px;
-  }
-}
-// show edit
-.diary {
   &-background {
     background-color: rgb(212, 218, 223);
   }
   &-form {
     color: rgb(20, 30, 139);
   }
-  
+}
+// index
+.playlist-item {
+  margin-left:20px;
+  color: rgb(20, 30, 139);
+  > h3 {
+    font-size: 18px;
+    max-width: 500px;
+  }
+}
+.calender-text {
+  text-decoration: none;
+}
+// show edit
+.note-box {
+  border: solid 2px #999; /*外枠の線*/
+  padding: 0 1em 0 2em; /*内側の余白*/
+  position: relative;
+  width: 500px;
+  background-color: rgb(255, 255, 255);
+  margin: 0 auto;
+}
+/*文字、罫線の設定*/
+.note-box p {
+  border-bottom: dashed 1px #ccc; /*罫線*/
+  line-height: 1.5; /*行の高さ*/
+  padding: 0.5em 0 0.5em 0.5em; /*文字の位置*/
+  margin:0;
+}
+
+/*ドットの設定*/
+.note-box::before {
+  content: "";
+  position: absolute;
+  border-right: dotted 10px #ddd; /*ドットの大きさ、高さ*/
+  height:90%;
+  top:0.5em; /*位置*/
+  left:0.5em; /*位置*/
 }
 .form-fields {
   margin: 0 auto;

@@ -1,6 +1,6 @@
 class Diary < ApplicationRecord
   belongs_to :user
-  validates :text, presence: true
+  validates :text, presence: true, length: { maximum: 500 }
   validates :start_time, uniqueness: {
     scope: :user_id,
     message: "同じ日付の日記は一つしか作れません",

@@ -18,11 +18,6 @@
         <p><%= form.text_field :title, class:"field-desgin one-line" %></p>
       </div>
 
-      <div class="field">
-        <p><span class="red">*</span><%= form.label :text, '内容', class:"field-text" %></p>
-        <p><%= form.text_area :text, class:"field-desgin lines" %></p>
-      </div>
-
       <% if starttime_column %>
         <div class="field">
           <p><%= form.label :start_time, '日付', class:"field-text" %></p>
@@ -54,6 +49,11 @@
           <i class="fa-regular fa-face-frown"></i>
           <p>わるかった<p>
         <% end %>
+      </div>
+
+      <div class="field">
+        <p><span class="red">*</span><%= form.label :text, '内容', class:"field-text" %></p>
+        <p><%= form.text_area :text, class:"field-desgin lines" %></p>
       </div>
 
       <div class="actions">

@@ -13,9 +13,9 @@
     <div class="diary-calender col-md-6">
       <%= month_calendar events: @diaries do |date, diaries| %>
         <% unless diaries.empty? %>
-          <%= link_to date.day, diary_path(diaries) %>
+          <%= link_to date.day, diary_path(diaries), class:"calender-text" %>
         <% else %>
-          <%= link_to date.day, new_diary_path(date: date) %>
+          <%= link_to date.day, new_diary_path(date: date), class:"calender-text" %>
 
         <% end %>
 
