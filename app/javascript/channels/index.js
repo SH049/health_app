@@ -3,3 +3,6 @@
 
 const channels = require.context('.', true, /_channel\.js$/)
 channels.keys().forEach(channels)
+
+// You can specify which plugins you need
+import { Tooltip, Toast, Popover } from "bootstrap";
