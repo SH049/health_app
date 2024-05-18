@@ -18,6 +18,8 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "css-loader": "^3.6.0",
+    "postcss-loader": "^3.0.0",
     "webpack-dev-server": "^3"
   }
 }
