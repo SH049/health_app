@@ -7,7 +7,7 @@ RSpec.describe "Diaries", type: :request do
 
     before do
       sign_in user
-      get diaries_path # ページにアクセス
+      get diaries_path
     end
 
     it "indexが効いているかどうか" do
