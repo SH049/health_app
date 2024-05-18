@@ -10,3 +10,13 @@ environment.plugins.prepend('Provide',
     jQuery: 'jquery/src/jquery'
   })
 )
+
+environment.config.merge({
+  resolve: {
+    alias: {
+      jquery: 'jquery/src/jquery'
+    }
+  }
+})
+
+module.exports = environment
