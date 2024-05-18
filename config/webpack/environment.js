@@ -10,6 +10,8 @@ environment.plugins.prepend('Provide',
     jQuery: 'jquery/src/jquery'
   })
 )
+const sassLoader = environment.loaders.get('sass')
+sassLoader.use.push('sass-loader')
 
 environment.loaders.get('sass').use.splice(-1, 0, {
   loader: 'postcss-loader'
