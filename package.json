@@ -11,6 +11,7 @@
     "chart.js": "^4.4.2",
     "chartkick": "^5.0.1",
     "jquery": "^3.7.1",
+    "node-sass": "^9.0.0",
     "popper.js": "^1.16.1",
     "turbolinks": "^5.2.0",
     "webpack": "^4.46.0",
