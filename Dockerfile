@@ -3,9 +3,12 @@ FROM ruby:3.1.4-buster
 RUN apt-get update -qq && apt-get install -y build-essential nodejs default-mysql-client libmariadb-dev-compat
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Install Node.js 14
+# Install Node.js 14 using n
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 RUN apt-get install -y nodejs
+RUN npm install -g n
+RUN n 14.16.1
+RUN npm install -g npm@latest
 
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
