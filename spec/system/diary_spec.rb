@@ -90,6 +90,7 @@ RSpec.describe "Diaries", type: :system do
     it '編集ボタンを押すと編集ページに飛ぶこと' do
       click_on "編集"
       expect(current_path).to eq(edit_diary_path(diary))
+      expect(page).to have_content(diary.text)
     end
     it '一覧に戻るボタンを押すと一覧ページに飛ぶこと' do
       click_on "一覧に戻る"
