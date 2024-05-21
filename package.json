@@ -13,13 +13,13 @@
     "jquery": "^3.7.1",
     "popper.js": "^1.16.1",
     "sass": "^1.77.2",
-    "turbolinks": "^5.2.0"
+    "turbolinks": "^5.2.0",
+    "css-loader": "^3.6.0",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "10.1.1"
   },
   "version": "0.1.0",
   "devDependencies": {
-    "css-loader": "^3.6.0",
-    "postcss-loader": "^3.0.0",
-    "sass-loader": "^10.1.1",
     "webpack-dev-server": "^3"
   }
 }
