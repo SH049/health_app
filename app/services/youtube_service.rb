@@ -4,7 +4,7 @@ module YoutubeService
 
   def fetch_playlist_items(playlist_id)
     youtube = Google::Apis::YoutubeV3::YouTubeService.new
-    youtube.key = Rails.application.credentials.google[:api_key]
+    youtube.key = ENV['GOOGLE_API_KEY'] || Rails.application.credentials.google[:api_key]
 
     response = youtube.list_playlist_items(
       'snippet,contentDetails',
