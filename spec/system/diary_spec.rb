@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Diaries", type: :system do
   let(:user) { create(:user) }
-  let!(:diary) { create(:diary, user: user, start_time: Date.today) }
+  let!(:diary_today) { create(:diary, user: user, start_time: Date.today, feeling: 2) }
   let(:mock_playlist_item) do
     [
       double('playlist_item', snippet: double('snippet', title: '動画タイトル'),
@@ -21,36 +21,31 @@ RSpec.describe "Diaries", type: :system do
     end
     describe '日記' do
       context "日記がある場合" do
-        # let!(:diary) { create(:diary, user: user, start_time: date) } # 非空のdiaryを作成
 
         it "日付をクリックするとshowページに飛ぶこと" do
-          # click_on date.day
+          click_link diary_today.start_time.day.to_s
 
-          click_link diary.start_time.day.to_s
+          expect(page).to have_current_path(diary_path(diary_today))
+          expect(page).to have_content(diary_today.text)
+          expect(page).to have_content(diary_today.title)
 
-          expect(page).to have_current_path(diary_path(diary))
-          expect(page).to have_content(diary.text)
-          expect(page).to have_content(diary.title)
-
-          expect(current_path).to eq(diary_path(diary))
-          # binding pry
-          # expect(page).to have_link(date.day, href: diary_path(diary))
+          expect(current_path).to eq(diary_path(diary_today))
         end
 
         it "テキストをクリックするとshowページに飛ぶこと" do
-          # click_on date.day
-          click_link diary.text
+          click_link diary_today.text
 
-          expect(page).to have_current_path(diary_path(diary))
-          expect(page).to have_content(diary.text)
-          expect(page).to have_content(diary.title)
+          expect(page).to have_current_path(diary_path(diary_today))
+          expect(page).to have_content(diary_today.text)
+          expect(page).to have_content(diary_today.title)
+          expect(page).to have_content(diary_today.start_time.day.to_s)
+          expect(page).to have_content(diary_today.feeling.to_s)
 
-          expect(current_path).to eq(diary_path(diary))
+          expect(current_path).to eq(diary_path(diary_today))
 
           expect(page).to have_content("今日のあなたにおすすめの音楽")
           expect(page).to have_content("動画タイトル")
-          # binding pry
-          # expect(page).to have_link(date.day, href: diary_path(diary))
+
         end
       end
 
@@ -60,10 +55,7 @@ RSpec.describe "Diaries", type: :system do
           click_link Date.tomorrow.day.to_s
 
           expect(page).to have_current_path(new_diary_path(date: Date.tomorrow))
-          # expect(page).to have_selector('form#new_diary')
-          # expect(page).to have_link(date.day, href: new_diary_path(date: date))
-          # click_link date.day
-          # expect(current_path).to eq(diary_path(diary))
+
         end
       end
     end
@@ -82,16 +74,54 @@ RSpec.describe "Diaries", type: :system do
 
   describe 'show' do
     before do
-      visit diary_path(diary) # ページにアクセス
+      visit diary_path(diary_today) # ページにアクセス
     end
+    
     it '日記が表示されること' do
-      expect(page).to have_content(diary.text)
+      expect(page).to have_content(diary_today.text)
     end
+    
     it '編集ボタンを押すと編集ページに飛ぶこと' do
       click_on "編集"
-      expect(current_path).to eq(edit_diary_path(diary))
-      expect(page).to have_content(diary.text)
+      expect(current_path).to eq(edit_diary_path(diary_today))
+      expect(page).to have_content(diary_today.text)
     end
+    
+    it '一覧に戻るボタンを押すと一覧ページに飛ぶこと' do
+      click_on "一覧に戻る"
+      expect(current_path).to eq(diaries_path)
+    end
+  end
+
+  describe 'new' do
+    before do
+      visit new_diary_path(date: Date.tomorrow)
+    end
+
+    it '日記作成に成功すること' do
+
+      fill_in 'タイトル', with: '仮のタイトル'
+      fill_in '内容', with: '仮の内容'
+      choose 'よかった'
+
+      click_button '送信'
+
+      expect(page).to have_content('仮のタイトル')
+      expect(page).to have_content('仮の内容')
+    end
+
+    it '日記作成に失敗すること' do
+      visit new_diary_path
+
+      fill_in 'タイトル', with: ''
+      fill_in '内容', with: ''
+      choose 'ふつう'
+
+      click_button '送信'
+
+      expect(page).to have_content('エラーが発生しました')
+    end
+
     it '一覧に戻るボタンを押すと一覧ページに飛ぶこと' do
       click_on "一覧に戻る"
       expect(current_path).to eq(diaries_path)
